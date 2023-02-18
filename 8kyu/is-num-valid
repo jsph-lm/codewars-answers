@@ -1,0 +1,18 @@
+//this is an exercise by CF
+// see https://codepen.io/jsph-lm/pen/yLxNjoN?editors=0011
+
+
+function isValidNumber(num) {
+  // write code here
+  if (typeof num === 'undefined' || isNaN(num)) {
+    return console.log(num + " is not a valid number");
+  } else {
+    return console.log(num + " is a valid number");
+  }
+}
+
+isValidNumber(11); //"11 is a valid number"
+isValidNumber("19"); //"19 is a valid number"
+isValidNumber("xyz"); //"xyz is not a number"
+isValidNumber("17.5"); //"17.5 is a valid number"
+isValidNumber("21F"); //"21F is not a number"

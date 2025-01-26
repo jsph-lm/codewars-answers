@@ -1,0 +1,16 @@
+def reverse_words(text):
+    result = []
+    word = ""
+    
+    for char in text:
+        if char == " ":
+            if word: 
+                result.append(word[::-1])
+                word = ""
+            result.append(char)
+        else:
+            word += char
+            
+    if word: 
+        result.append(word[::-1])
+    return ''.join(result)

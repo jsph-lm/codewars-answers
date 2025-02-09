@@ -1,0 +1,25 @@
+function sortGrades(arr){
+  arr.sort((a, b) => {
+    // "VB" should always come first
+    if (a === "VB") return -1;
+    if (b === "VB") return 1;
+
+    // Extract the numeric part and handle "V0+" separately
+    let matchA = a.match(/^V(\d+)\+?$/); // Extracts number from "V0", "V0+", "V1", etc.
+    let matchB = b.match(/^V(\d+)\+?$/);
+    
+    let numA = matchA ? parseInt(matchA[1]) : null;
+    let numB = matchB ? parseInt(matchB[1]) : null;
+    
+    // If one is null (i.e., it doesn't match "V" + number format), sort normally
+    if (numA === null || numB === null) return a.localeCompare(b);
+
+    // Sort numerically
+    if (numA !== numB) return numA - numB;
+
+    // If numbers are equal, "V0" should come before "V0+"
+    return a.includes("+") - b.includes("+");
+  });
+
+  return arr;
+}
